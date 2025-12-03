@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Post detail</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="posts.html" class="btn">⬅ Terug</a>
+
+<h1>Post detail</h1>
+
+<!-- Post info -->
+<div id="post-detail"></div>
+
+<!-- Nieuw comment form -->
+<h2>Nieuw comment</h2>
+<form id="new-comment-form">
+    <textarea id="new-comment-text" placeholder="Schrijf een comment..."></textarea>
+    <button class="btn" type="submit">Toevoegen</button>
+</form>
+
+<!-- Comments -->
+<h2>Alle comments</h2>
+<div id="comments"></div>
+
+<!-- COMMENT EDIT MODAL -->
+<div id="edit-comment-box" class="modal">
+    <div class="modal-content">
+        <h3>Comment bewerken</h3>
+
+        <form id="edit-comment-form">
+            <textarea id="edit-comment-text"></textarea>
+
+            <div class="modal-buttons">
+                <button type="submit" class="btn">Opslaan</button>
+                <button type="button" class="btn cancel" onclick="cancelEdit()">Annuleren</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
