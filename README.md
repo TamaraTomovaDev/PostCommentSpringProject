@@ -1,6 +1,6 @@
 # 🌸 Pastel Blog App --- Full Stack Project
 
-Welkom bij mijn **Pastel Blog Application**, een volledige CRUD-webapplicatie gebouwd met:
+Welkom bij mijn volledige CRUD-webapplicatie gebouwd met:
 
 - **Spring Boot** (Back-end)
 - **MySQL** (Database)
