@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <title>Post bewerken</title>
@@ -7,16 +7,28 @@
 </head>
 <body>
 
-<h1>Post bewerken</h1>
-<a class="btn" href="posts.html">⬅ Terug</a>
+<div class="page-wrapper">
 
-<form id="edit-post-form">
-    <input id="title" required>
-    <input id="description" required>
-    <textarea id="content" required></textarea>
+    <header>
+        <img src="header.jpeg" class="header-image">
+    </header>
 
-    <button class="btn" type="submit">Opslaan</button>
-</form>
+    <div class="center-card">
+        <h2>Post bewerken</h2>
+
+        <form id="edit-post-form" class="form-styled">
+            <input type="text" id="title" required>
+            <input type="text" id="description" required>
+            <textarea id="content" required></textarea>
+
+            <div class="button-row">
+                <button type="submit" class="btn">Opslaan</button>
+                <a href="posts.html" class="btn">Annuleer</a>
+            </div>
+        </form>
+    </div>
+
+</div>
 
 <script src="script.js"></script>
 </body>

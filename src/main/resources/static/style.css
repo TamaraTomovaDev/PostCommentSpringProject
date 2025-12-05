@@ -1,70 +1,131 @@
+/* ALGEMENE PAGINA STYLING */
 body {
-    font-family: Arial, sans-serif;
-    margin: 30px;
-    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f7f1ed; /* zachte nude achtergrond */
+    color: #7a6064;
 }
 
+/* PAGINA WRAPPER: content gecentreerd */
+.page-wrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* HEADER */
+.header-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    margin-bottom: 30px;
+}
+
+/* KADER VOOR PAGINA CONTENT */
+.center-card {
+    background: #f3e6dd; /* latte beige */
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+/* TITELS */
 h1, h2, h3 {
+    color: #7a6064;
     font-weight: 600;
 }
 
-.card, .comment {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+/* PARAGRAAF BESCHRIJVING */
+.page-description {
+    font-size: 15px;
+    opacity: 0.8;
+    margin-bottom: 10px;
 }
 
+/* KAART VOOR POSTS */
+.post-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+/* COMMENT KAART */
+.comment {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+}
+
+/* INPUTS */
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    border: 1px solid #dec7bc;
+    background: #fdf8f6;
+    font-size: 15px;
+    color: #7a6064;
+}
+
+/* Placeholder styling */
+input::placeholder,
+textarea::placeholder {
+    color: #a8928d;
+}
+
+/* KNOP STYLING (OVERAL HETZELFDE) */
 .btn {
     display: inline-block;
-    padding: 8px 12px;
-    background: #007bff;
-    color: white;
+    padding: 12px 24px;
+    min-width: 140px;
+    text-align: center;
+    background: #e7cfc4;     /* nude blush */
+    color: #5e3d42;
     text-decoration: none;
-    border-radius: 6px;
-    margin-right: 5px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
 }
 
 .btn:hover {
-    background: #0056b3;
+    background: #d8b7ac;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
+/* BUTTONS NAAST ELKAAR */
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
 }
+
+/* MODAL (COMMENT BEWERKEN) */
 .modal {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
+    inset: 0;
+    background: rgba(0,0,0,0.55);
     justify-content: center;
     align-items: center;
 }
 
 .modal-content {
-    background: white;
-    padding: 20px;
-    width: 400px;
-    border-radius: 10px;
-}
-
-.modal-content textarea {
-    width: 100%;
-    height: 100px;
-}
-
-.modal-buttons {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-}
-
-.cancel {
-    background: gray;
+    background: #f3e6dd;
+    padding: 25px;
+    border-radius: 14px;
+    width: 380px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.17);
 }

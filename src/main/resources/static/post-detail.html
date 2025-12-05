@@ -2,45 +2,52 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Post detail</title>
+    <title>Bericht bekijken</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<a href="posts.html" class="btn">⬅ Terug</a>
+<div class="page-wrapper">
 
-<h1>Post detail</h1>
+    <!-- HEADER -->
+    <header>
+        <img src="header.jpeg" class="header-image">
+    </header>
 
-<!-- Post info -->
-<div id="post-detail"></div>
+    <!-- DETAIL -->
+    <div id="post-detail" class="center-card"></div>
 
-<!-- Nieuw comment form -->
-<h2>Nieuw comment</h2>
-<form id="new-comment-form">
-    <textarea id="new-comment-text" placeholder="Schrijf een comment..."></textarea>
-    <button class="btn" type="submit">Toevoegen</button>
-</form>
+    <h3>Reacties</h3>
+    <div id="comments"></div>
 
-<!-- Comments -->
-<h2>Alle comments</h2>
-<div id="comments"></div>
+    <div class="center-card">
+        <h3>Nieuwe reactie</h3>
+        <form id="new-comment-form">
+            <textarea id="new-comment-text" placeholder="Schrijf een reactie..." required></textarea>
+            <div class="button-row">
+                <button class="btn" type="submit">Toevoegen</button>
+                <a href="posts.html" class="btn">Terug</a>
+            </div>
+        </form>
+    </div>
 
-<!-- COMMENT EDIT MODAL -->
-<div id="edit-comment-box" class="modal">
+</div>
+
+<!-- MODAL VOOR COMMENT EDIT -->
+<div id="edit-modal" class="modal">
     <div class="modal-content">
-        <h3>Comment bewerken</h3>
+        <h3>Reactie bewerken</h3>
 
         <form id="edit-comment-form">
-            <textarea id="edit-comment-text"></textarea>
+            <textarea id="edit-comment-text" required></textarea>
 
-            <div class="modal-buttons">
+            <div class="button-row">
                 <button type="submit" class="btn">Opslaan</button>
-                <button type="button" class="btn cancel" onclick="cancelEdit()">Annuleren</button>
+                <button type="button" class="btn cancel" onclick="closeEditModal()">Annuleer</button>
             </div>
         </form>
     </div>
 </div>
-
 
 <script src="script.js"></script>
 </body>

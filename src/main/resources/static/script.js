@@ -1,15 +1,13 @@
 const API = "/api";
 
-/* ============================
-   GET URL PARAM
-============================ */
+// URL PARAMETER
+
 function getParam(name) {
     return new URLSearchParams(window.location.search).get(name);
 }
 
-/* ============================
-   POSTS PAGINA (posts.html)
-============================ */
+// POSTS PAGINA (posts.html)
+
 if (document.getElementById("posts-container")) {
 
     fetch(`${API}/posts`)
@@ -20,12 +18,15 @@ if (document.getElementById("posts-container")) {
 
             posts.forEach(p => {
                 div.innerHTML += `
-                <div class="card">
+                <div class="post-card">
                     <h3>${p.title}</h3>
                     <p>${p.description}</p>
-                    <a class="btn" href="post-detail.html?id=${p.id}">Bekijk</a>
-                    <a class="btn" href="edit-post.html?id=${p.id}">Bewerken</a>
-                    <button class="btn" onclick="deletePost(${p.id})">Verwijderen</button>
+
+                    <div class="button-row">
+                        <a class="btn" href="post-detail.html?id=${p.id}">Bekijken</a>
+                        <a class="btn" href="edit-post.html?id=${p.id}">Bewerken</a>
+                        <button class="btn" onclick="deletePost(${p.id})">Verwijderen</button>
+                    </div>
                 </div>`;
             });
         });
@@ -36,19 +37,17 @@ function deletePost(id) {
         .then(() => window.location.reload());
 }
 
-/* ============================
-   POST DETAIL PAGINA
-============================ */
+// POST DETAIL PAGINA
+
 if (document.getElementById("post-detail")) {
 
     const postId = getParam("id");
 
-    // Post tonen
     fetch(`${API}/posts/${postId}`)
         .then(res => res.json())
         .then(post => {
             document.getElementById("post-detail").innerHTML = `
-                <div class="card">
+                <div class="post-card">
                     <h3>${post.title}</h3>
                     <p>${post.description}</p>
                     <p>${post.content}</p>
@@ -58,7 +57,6 @@ if (document.getElementById("post-detail")) {
 
     loadComments(postId);
 
-    // Nieuw comment
     document.getElementById("new-comment-form").addEventListener("submit", e => {
         e.preventDefault();
 
@@ -66,21 +64,25 @@ if (document.getElementById("post-detail")) {
             text: document.getElementById("new-comment-text").value
         };
 
-        fetch(`${API}/comments/posts/${postId}/comments`, {
+        fetch(`${API}/posts/${postId}/comments`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(comment)
         })
+            .then(res => {
+                if (!res.ok) throw new Error("Comment toevoegen mislukt");
+                return res.json();
+            })
             .then(() => {
                 document.getElementById("new-comment-text").value = "";
                 loadComments(postId);
-            });
+            })
+            .catch(err => console.error(err));
     });
 }
 
-/* ============================
-   COMMENTS LADEN
-============================ */
+// COMMENTS LADEN
+
 function loadComments(postId) {
     fetch(`${API}/posts/${postId}/comments`)
         .then(res => res.json())
@@ -93,40 +95,38 @@ function loadComments(postId) {
                     <div class="comment">
                         <p>${c.text}</p>
 
-                        <button class="btn" onclick="startEditComment(${c.id}, '${c.text.replace(/'/g, "\\'")}', ${postId})">
-                            Bewerken
-                        </button>
+                        <div class="button-row">
+                            <button class="btn" 
+                                onclick="startEditComment(${c.id}, '${c.text.replace(/'/g, "\\'")}', ${postId})">
+                                Bewerken
+                            </button>
 
-                        <button class="btn" onclick="deleteComment(${c.id}, ${postId})">
-                            Verwijderen
-                        </button>
+                            <button class="btn" onclick="deleteComment(${c.id}, ${postId})">
+                                Verwijderen
+                            </button>
+                        </div>
                     </div>
                 `;
             });
         });
 }
 
-/* ============================
-   COMMENT VERWIJDEREN
-============================ */
+// COMMENT VERWIJDEREN
+
 function deleteComment(commentId, postId) {
     fetch(`${API}/comments/${commentId}`, { method: "DELETE" })
         .then(() => loadComments(postId));
 }
 
-/* ============================
-   COMMENT BEWERKEN (POPUP)
-============================ */
+// COMMENT BEWERKEN (MODAL)
 function startEditComment(commentId, text, postId) {
-    document.getElementById("edit-comment-box").style.display = "block";
+    document.getElementById("edit-modal").style.display = "flex";
     document.getElementById("edit-comment-text").value = text;
 
     document.getElementById("edit-comment-form").onsubmit = function (e) {
         e.preventDefault();
 
-        const updated = {
-            text: document.getElementById("edit-comment-text").value
-        };
+        const updated = { text: document.getElementById("edit-comment-text").value };
 
         fetch(`${API}/comments/${commentId}`, {
             method: "PUT",
@@ -134,20 +134,18 @@ function startEditComment(commentId, text, postId) {
             body: JSON.stringify(updated)
         })
             .then(() => {
-                document.getElementById("edit-comment-box").style.display = "none";
+                closeEditModal();
                 loadComments(postId);
             });
     };
 }
 
-// Annuleren
-function cancelEdit() {
-    document.getElementById("edit-comment-box").style.display = "none";
+function closeEditModal() {
+    document.getElementById("edit-modal").style.display = "none";
 }
 
-/* ============================
-   POST TOEVOEGEN
-============================ */
+// POST TOEVOEGEN
+
 if (document.getElementById("add-post-form")) {
 
     document.getElementById("add-post-form").addEventListener("submit", e => {
@@ -168,9 +166,8 @@ if (document.getElementById("add-post-form")) {
     });
 }
 
-/* ============================
-   POST BEWERKEN
-============================ */
+// POST BEWERKEN
+
 if (document.getElementById("edit-post-form")) {
 
     const id = getParam("id");

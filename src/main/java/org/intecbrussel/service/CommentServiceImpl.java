@@ -16,7 +16,6 @@ public class CommentServiceImpl implements CommentService{
     @Autowired
     private PostRepository postRepository;
 
-    // Niuewe comment toevoegen aan een post
     @Override
     public Comment addCommentToPost(Long postId, Comment comment) {
         Post post = postRepository.findById(postId)

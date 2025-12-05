@@ -1,22 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Nieuwe post</title>
+    <title>Nieuw post</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Nieuwe post toevoegen</h1>
-<a class="btn" href="posts.html">⬅ Terug</a>
+<div class="page-wrapper">
 
-<form id="add-post-form">
-    <input id="title" placeholder="Titel" required>
-    <input id="description" placeholder="Beschrijving" required>
-    <textarea id="content" placeholder="Inhoud" required></textarea>
+    <header>
+        <img src="header.jpeg" class="header-image">
+    </header>
 
-    <button class="btn" type="submit">Opslaan</button>
-</form>
+    <div class="center-card">
+        <h2>Nieuw post toevoegen</h2>
+
+        <form id="add-post-form" class="form-styled">
+            <input type="text" id="title" placeholder="Titel" required>
+            <input type="text" id="description" placeholder="Korte beschrijving" required>
+            <textarea id="content" placeholder="Inhoud..." required></textarea>
+
+            <div class="button-row">
+                <button type="submit" class="btn">Toevoegen</button>
+                <a href="posts.html" class="btn">Terug</a>
+            </div>
+        </form>
+    </div>
+
+</div>
 
 <script src="script.js"></script>
 </body>

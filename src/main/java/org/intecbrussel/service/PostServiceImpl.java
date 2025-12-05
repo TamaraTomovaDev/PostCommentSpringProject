@@ -54,7 +54,6 @@ public class PostServiceImpl implements PostService{
         postRepository.delete(post);
     }
 
-    // Alle comments van een post ophalen
     @Override
     @Transactional
     public Set<Comment> getCommentsByPostId(Long postId) {

@@ -1,17 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Posts</title>
+    <title>Alle berichten</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Alle posts</h1>
-<a class="btn" href="index.html">Terug</a>
-<hr>
+<div class="page-wrapper">
 
-<div id="posts-container"></div>
+    <!-- HEADER -->
+    <header>
+        <img src="header.jpeg" class="header-image">
+    </header>
+
+    <!-- PAGINA KADER -->
+    <div class="center-card">
+        <h2>Alle Posten</h2>
+        <p class="page-description">
+            Lees inspirerende bijdragen van anderen of bekijk de details van een bericht.
+        </p>
+    </div>
+
+    <!-- POST OVERZICHT -->
+    <div id="posts-container"></div>
+
+    <!-- TERUG KNOP -->
+    <div class="button-row">
+        <a href="index.html" class="btn">Terug</a>
+    </div>
+
+</div>
 
 <script src="script.js"></script>
 </body>
